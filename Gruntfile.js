@@ -274,6 +274,7 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.webp',
                         '{,*/}*.html',
+                        '{,*/}*.php',
                         'styles/fonts/{,*/}*.*',
                         'bower_components/' + (this.includeCompass ? 'sass-' : '') + 'bootstrap/' + (this.includeCompass ? 'fonts/' : 'dist/fonts/') +'*.*'
                     ]
