@@ -32,12 +32,6 @@ function checkWin(){
     }
 }
 
-$.get( 'http://localhost/citewords/questions.php', function( data ) {
-    'use strict';
-    questions = shuffle(JSON.parse(data));
-    startGame();
-});
-
 function startGame(){
     'use strict';
 
@@ -52,7 +46,7 @@ function startGame(){
     wordsInOrder = sentence.split(' ');
     answer = [];
 
-    if (questionCount == questions.length - 1){
+    if (questionCount === questions.length - 1){
         questionCount = -1;
         questions = shuffle(questions);
     }
@@ -90,3 +84,9 @@ function startGame(){
         accept: '.word.col-xs-2.col-md-1'
     });
 }
+
+$.get( 'http://localhost/citewords/questions.php', function( data ) {
+    'use strict';
+    questions = shuffle(JSON.parse(data));
+    startGame();
+});
