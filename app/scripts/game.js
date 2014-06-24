@@ -6,6 +6,11 @@ var words = null;
 var wordsInOrder = null;
 var questionCount = -1;
 
+document.ontouchstart = function(e){
+    'use strict';
+    e.preventDefault();
+};
+
 function shuffle(o){
     'use strict';
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x){}
