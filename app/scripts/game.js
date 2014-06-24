@@ -85,7 +85,7 @@ function startGame(){
     });
 }
 
-$.get( 'http://localhost/citewords/questions.php', function( data ) {
+$.get( 'questions.php', function( data ) {
     'use strict';
     questions = shuffle(JSON.parse(data));
     startGame();
