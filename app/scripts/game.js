@@ -4,6 +4,7 @@ var answer = [];
 var sentence = null;
 var words = null;
 var wordsInOrder = null;
+var questionCount = -1;
 
 function shuffle(o){
     'use strict';
@@ -26,15 +27,35 @@ function addLine(lineNumber){
 function checkWin(){
     'use strict';
     if (answer.toString() === wordsInOrder.toString()){
-        alert ('Winner');
+        $('#winner').show();
+        $('#words').hide();
     }
 }
 
+$.get( 'http://localhost/citewords/questions.php', function( data ) {
+    'use strict';
+    questions = shuffle(JSON.parse(data));
+    startGame();
+});
+
 function startGame(){
     'use strict';
-    sentence = questions[0];
+
+    $('#winner').hide();
+    $('#words').show();
+    $('#words').html(' ');
+    $('#lines').html(' ');
+
+    questionCount++;
+    sentence = questions[questionCount];
     words = shuffle(sentence.split(' '));
     wordsInOrder = sentence.split(' ');
+    answer = [];
+
+    if (questionCount == questions.length - 1){
+        questionCount = -1;
+        questions = shuffle(questions);
+    }
 
     words.forEach(function(word){
         displayWord(word);
@@ -69,9 +90,3 @@ function startGame(){
         accept: '.word.col-xs-2.col-md-1'
     });
 }
-
-$.get( 'http://localhost/citewords/questions.php', function( data ) {
-    'use strict';
-    questions = shuffle(JSON.parse(data));
-    startGame();
-});
