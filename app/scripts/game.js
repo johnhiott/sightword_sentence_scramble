@@ -6,7 +6,7 @@ var words = null;
 var wordsInOrder = null;
 var questionCount = -1;
 
-document.ontouchstart = function(e){
+document.ontouchmove = function(e){
     'use strict';
     e.preventDefault();
 };
