@@ -90,7 +90,7 @@ function startGame(){
     });
 }
 
-$.get( 'http://johnhiott.com/citewords/questions.php', function( data ) {
+$.get( 'http://johnhiott.com/sightwords/questions.php', function( data ) {
     'use strict';
     questions = shuffle(JSON.parse(data));
     startGame();
